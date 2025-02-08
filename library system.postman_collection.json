@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "a5e7f77c-fd13-489a-9721-5d6c65ea119a",
+		"name": "library system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40790316"
+	},
+	"item": [
+		{
+			"name": "get bookshop by id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update name of bookshop",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\":\"1\",\r\n\"name\":\"math\",\r\n\"title\":\"learn math from zero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cities",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get bookshop by name",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get by email id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update email of bookshop",
+			"request": {
+				"method": "PUT",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "add one bookshop",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let newName = pm.variables.replaceIn('{{$randomCompanyName}}');\r",
+							"\r",
+							"let newEmail = pm.variables.replaceIn('{{$randomEmail}}');\r",
+							"\r",
+							"let newCity = pm.variables.replaceIn('{{$randomCity}}');\r",
+							"\r",
+							"pm.collectionVariables.set(\"TheName\", newName);\r",
+							"\r",
+							"pm.collectionVariables.set(\"TheEmail\", newEmail);\r",
+							"\r",
+							"pm.collectionVariables.set(\"TheCity\", newCity);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"{{TheName}}\",\r\n  \"city\": \"{{TheCity}}\",\r\n  \"email\": \"{{TheEmail}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/bookshop/single",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"bookshop",
+						"single"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete one bookshop",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "TheID",
+			"value": ""
+		},
+		{
+			"key": "TheName",
+			"value": ""
+		},
+		{
+			"key": "Thetitle",
+			"value": ""
+		},
+		{
+			"key": "TheEmail",
+			"value": ""
+		},
+		{
+			"key": "TheCity",
+			"value": ""
+		}
+	]
+}
